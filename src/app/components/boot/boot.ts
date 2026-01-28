@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,13 +8,16 @@ import { CommonModule } from '@angular/common';
   templateUrl: './boot.html',
   styleUrls: ['./boot.css']
 })
-export class BootComponent implements OnInit {
+export class BootComponent implements OnInit, OnDestroy {
   @Output() bootComplete = new EventEmitter<void>();
 
   progress = 0;
   logs: string[] = [];
 
-  // The fake "startup" script
+  // Store timers so we can stop them
+  private logInterval: any;
+  private progressInterval: any;
+
   private systemLogs = [
     'INITIALIZING KERNEL...',
     'LOADING MODULES: [CORE, UI, NETWORK]...',
@@ -29,30 +32,47 @@ export class BootComponent implements OnInit {
     this.runBootSequence();
   }
 
+  ngOnDestroy() {
+    this.clearTimers();
+  }
+
   runBootSequence() {
     let logIndex = 0;
 
-    // 1. Add logs one by one
-    const logInterval = setInterval(() => {
+    // 1. Logs Timer
+    this.logInterval = setInterval(() => {
       if (logIndex < this.systemLogs.length) {
         this.logs.push(this.systemLogs[logIndex]);
         logIndex++;
       }
     }, 400);
 
-    // 2. Smooth Progress Bar
-    const progressInterval = setInterval(() => {
-      this.progress += Math.random() * 5; // Random jump
+    // 2. Progress Bar Timer
+    this.progressInterval = setInterval(() => {
+      this.progress += Math.random() * 5;
       if (this.progress >= 100) {
-        this.progress = 100;
-        clearInterval(progressInterval);
-        clearInterval(logInterval);
-
-        // 3. Wait a moment at 100% then finish
-        setTimeout(() => {
-          this.bootComplete.emit(); // Tell App component we are done
-        }, 800);
+        this.finishBoot();
       }
     }, 150);
+  }
+
+  // logic to stop everything and finish immediately
+  skipBoot() {
+    this.clearTimers();
+    this.progress = 100;
+    this.bootComplete.emit();
+  }
+
+  private finishBoot() {
+    this.progress = 100;
+    this.clearTimers();
+    setTimeout(() => {
+      this.bootComplete.emit();
+    }, 500);
+  }
+
+  private clearTimers() {
+    if (this.logInterval) clearInterval(this.logInterval);
+    if (this.progressInterval) clearInterval(this.progressInterval);
   }
 }

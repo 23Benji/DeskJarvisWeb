@@ -11,54 +11,54 @@ import { CommonModule } from '@angular/common';
 export class FeaturesComponent {
   features = [
     {
-      title: 'Modular Architecture',
-      desc: 'Every widget is an independent module. Add, remove, or customize to match your workflow.',
-      icon: 'fa-layer-group',
+      title: 'Interactive Dashboard',
+      desc: 'Fully modular workspace powered by @angular/cdk. Drag, drop, and organize widgets to build your perfect layout.',
+      icon: 'fa-table-columns', // Dashboard icon
       color: 'text-cyan-400',
       bg: 'bg-cyan-900/20',
       border: 'hover:border-cyan-400/50',
       shadow: 'hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]'
     },
     {
-      title: 'Drag & Drop',
-      desc: 'Powered by Angular CDK. Move widgets anywhere on your workspace with precision.',
-      icon: 'fa-arrows-up-down-left-right',
+      title: 'Smart Widgets',
+      desc: 'AI Center, Music Player, and Real-time Weather. Hide clutter in the Toolbox and pin your favorite visuals.',
+      icon: 'fa-brain', // AI/Smart icon
       color: 'text-purple-400',
       bg: 'bg-purple-900/20',
       border: 'hover:border-purple-400/50',
       shadow: 'hover:shadow-[0_0_20px_rgba(168,85,247,0.2)]'
     },
     {
-      title: 'Fully Resizable',
-      desc: 'Each widget adapts to any size. From compact status indicators to full-screen dashboards.',
-      icon: 'fa-expand',
+      title: 'Arcade Hub',
+      desc: 'Powered by Kaplay.js. Switch tabs to play retro classics like Duck Hunt and Tetris directly in your workflow.',
+      icon: 'fa-gamepad', // Gaming icon
       color: 'text-orange-400',
       bg: 'bg-orange-900/20',
       border: 'hover:border-orange-400/50',
       shadow: 'hover:shadow-[0_0_20px_rgba(251,146,60,0.2)]'
     },
     {
-      title: 'Cyberpunk Aesthetics',
-      desc: 'Dark glassmorphism, neon accents, and sci-fi typography. Designed for the future.',
-      icon: 'fa-palette',
-      color: 'text-red-400',
-      bg: 'bg-red-900/20',
-      border: 'hover:border-red-400/50',
-      shadow: 'hover:shadow-[0_0_20px_rgba(248,113,113,0.2)]'
-    },
-    {
-      title: 'Deep Customization',
-      desc: 'Configure colors, layouts, and behaviors. Make it truly yours.',
-      icon: 'fa-sliders', // or fa-gear
+      title: 'Cinematic UX',
+      desc: 'Immersive Matrix rain effects, cinematic intro sequences, and interactive tutorials for guided onboarding.',
+      icon: 'fa-eye', // Visual icon
       color: 'text-green-400',
       bg: 'bg-green-900/20',
       border: 'hover:border-green-400/50',
       shadow: 'hover:shadow-[0_0_20px_rgba(74,222,128,0.2)]'
     },
     {
-      title: 'Local First',
-      desc: 'Your data stays on your device. No cloud dependencies, complete privacy.',
-      icon: 'fa-shield-halved',
+      title: 'Angular 20 Core',
+      desc: 'Built on the bleeding edge. Standalone components, Vite build tool, and RxJS for reactive state management.',
+      icon: 'fa-code', // Code icon
+      color: 'text-red-400',
+      bg: 'bg-red-900/20',
+      border: 'hover:border-red-400/50',
+      shadow: 'hover:shadow-[0_0_20px_rgba(248,113,113,0.2)]'
+    },
+    {
+      title: 'Persistent State',
+      desc: 'Smart routing logic remembers your progress. Skip the Intro or Tutorial automatically if you\'ve been here before.',
+      icon: 'fa-memory', // Memory/Chip icon
       color: 'text-blue-400',
       bg: 'bg-blue-900/20',
       border: 'hover:border-blue-400/50',
