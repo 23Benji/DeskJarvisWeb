@@ -1,0 +1,101 @@
+<section class="py-24 px-4 relative flex justify-center bg-sci-base overflow-hidden">
+
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-indigo-900/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+  <div class="relative z-10 w-full max-w-6xl">
+
+    <div class="text-center mb-16">
+      <h3 class="text-sci-muted font-display uppercase tracking-widest text-xs mb-2">Entertainment Hub</h3>
+      <h2 class="text-4xl md:text-5xl font-display font-bold">
+        <i class="fa-solid fa-gamepad text-sci-purple mr-3"></i>
+        Retro <span class="text-transparent bg-clip-text bg-gradient-to-r from-sci-purple to-sci-orange">Gaming</span>
+      </h2>
+      <p class="text-sci-muted mt-4 max-w-2xl mx-auto">
+        Take a break with classic arcade games, powered by the Kaplay.js engine. Fully integrated into your workspace.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+      <div class="lg:col-span-5 flex flex-col gap-4">
+
+        <button *ngFor="let game of games"
+                (click)="selectGame(game.id)"
+                class="relative text-left p-6 rounded-xl border border-white/5 transition-all duration-300 group overflow-hidden"
+                [ngClass]="activeGame() === game.id ? 'bg-white/5 ' + game.color + ' ' + game.glow : 'hover:bg-white/5 hover:border-white/20 text-sci-muted'">
+
+          <div *ngIf="activeGame() === game.id" class="absolute right-6 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-current shadow-[0_0_10px_currentColor]"></div>
+
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-lg bg-black/30 flex items-center justify-center text-xl border border-white/5">
+              <i class="fa-solid {{ game.icon }}"></i>
+            </div>
+            <div>
+              <h4 class="font-display font-bold text-lg tracking-wide">{{ game.name }}</h4>
+              <p class="font-body text-sm opacity-70">{{ game.desc }}</p>
+            </div>
+          </div>
+        </button>
+
+        <div class="mt-4 pl-4 border-l-2 border-sci-cyan/30 text-sci-muted text-xs font-mono leading-relaxed">
+          <span class="text-sci-cyan">● KAPLAY.JS ENGINE</span><br>
+          High-performance 2D game engine with smooth animations and responsive controls.
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="relative rounded-2xl bg-black border border-white/10 p-2 shadow-2xl">
+
+          <div class="absolute inset-0 rounded-2xl shadow-[inset_0_0_40px_rgba(0,0,0,0.8)] pointer-events-none z-20"></div>
+
+          <div class="flex justify-between items-center px-4 py-2 bg-sci-panel border-b border-white/5 rounded-t-xl mb-1">
+            <div class="flex gap-1.5">
+              <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+            </div>
+            <div class="text-[10px] font-mono text-sci-cyan tracking-widest uppercase">
+              {{ activeGame() }}
+            </div>
+            <div class="text-[10px] text-sci-muted">ESC to exit</div>
+          </div>
+
+          <div class="h-[400px] w-full bg-[#050505] relative overflow-hidden flex items-center justify-center">
+
+            <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_2px,3px_100%] z-10 pointer-events-none"></div>
+
+            <div *ngIf="activeGame() === 'tetris'" class="text-center animate-pulse">
+              <div class="flex gap-1 justify-center items-end h-32 mb-4">
+                <div class="w-6 h-24 bg-sci-cyan shadow-[0_0_10px_#06b6d4]"></div>
+                <div class="w-6 h-12 bg-sci-purple shadow-[0_0_10px_#8b5cf6]"></div>
+                <div class="w-6 h-18 bg-sci-orange shadow-[0_0_10px_#f97316]"></div>
+                <div class="w-6 h-32 bg-green-500 shadow-[0_0_10px_#22c55e]"></div>
+              </div>
+              <h1 class="font-display text-4xl text-sci-cyan mb-2">TETRIS</h1>
+              <button class="px-6 py-2 bg-sci-cyan text-black font-bold uppercase text-xs rounded hover:scale-105 transition-transform">Play Now</button>
+            </div>
+
+            <div *ngIf="activeGame() === 'duck'" class="text-center">
+               <i class="fa-solid fa-crosshairs text-6xl text-sci-orange mb-4 opacity-80"></i>
+               <h1 class="font-display text-4xl text-sci-orange mb-2">DUCK HUNT</h1>
+               <div class="text-sci-muted text-xs mb-6">AIM · SHOOT · SCORE</div>
+               <button class="px-6 py-2 border border-sci-orange text-sci-orange font-bold uppercase text-xs rounded hover:bg-sci-orange hover:text-black transition-colors">Start Hunt</button>
+            </div>
+
+            <div *ngIf="activeGame() === 'pong'" class="text-center w-full px-12">
+              <div class="flex justify-between items-center mb-8 opacity-50">
+                <div class="w-2 h-16 bg-white"></div>
+                <div class="w-2 h-2 bg-white rounded-full"></div>
+                <div class="w-2 h-16 bg-white translate-y-8"></div>
+              </div>
+              <h1 class="font-display text-4xl text-sci-purple mb-2">PONG</h1>
+              <button class="px-6 py-2 bg-sci-purple text-white font-bold uppercase text-xs rounded hover:scale-105 transition-transform">1 vs 1</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

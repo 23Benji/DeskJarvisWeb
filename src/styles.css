@@ -1,1 +1,89 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #030712;
+  color: #e2e8f0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll bar */
+}
+
+/* --- SUPERCHARGED NEON UTILITIES --- */
+
+/* Strong Text Glow */
+.glow-text-cyan {
+  text-shadow:
+    0 0 10px rgba(6, 182, 212, 0.8),
+    0 0 20px rgba(6, 182, 212, 0.5);
+}
+.glow-text-purple {
+  text-shadow:
+    0 0 10px rgba(139, 92, 246, 0.8),
+    0 0 20px rgba(139, 92, 246, 0.5);
+}
+
+/* Strong Box Glow (for borders/buttons) */
+.glow-box-cyan {
+  box-shadow:
+    0 0 15px rgba(6, 182, 212, 0.3),
+    inset 0 0 10px rgba(6, 182, 212, 0.1);
+}
+
+/* The "Hacker" Glass Panel */
+.sci-card {
+  /* More opaque background for contrast */
+  background: rgba(15, 23, 42, 0.6);
+  /* Heavier blur */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Thin, sharp border */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* Subtle inner highlight to fake thickness */
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Ambient Background Lights (The "Blobs") */
+.ambient-light {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-appear {
+  animation: appear 1s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

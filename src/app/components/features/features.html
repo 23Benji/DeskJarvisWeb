@@ -1,0 +1,36 @@
+<section class="py-24 px-4 relative overflow-hidden bg-sci-base">
+
+  <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20 pointer-events-none"></div>
+
+  <div class="relative z-10 text-center mb-20 max-w-4xl mx-auto">
+    <h3 class="text-sci-muted font-display uppercase tracking-[0.3em] text-sm mb-4">Capabilities</h3>
+    <h2 class="font-display font-bold text-4xl md:text-5xl lg:text-6xl mb-6">
+      Workspace
+      <span class="bg-gradient-to-r from-sci-cyan via-blue-500 to-purple-500 bg-clip-text text-transparent">Reimagined</span>
+    </h2>
+    <p class="text-sci-muted text-lg max-w-2xl mx-auto font-body leading-relaxed">
+      A productivity environment that doesn't just work—it inspires. Built for those who demand more from their tools.
+    </p>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <div *ngFor="let item of features"
+         class="group relative bg-sci-panel/40 border border-white/5 rounded-2xl p-8 transition-all duration-300 {{ item.border }} {{ item.shadow }}">
+
+      <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110 duration-300 {{ item.bg }}">
+        <i class="fa-solid {{ item.icon }} text-2xl {{ item.color }}"></i>
+      </div>
+
+      <h3 class="font-display font-bold text-xl mb-3 text-white group-hover:text-sci-cyan transition-colors">
+        {{ item.title }}
+      </h3>
+      <p class="text-sci-muted font-body leading-relaxed text-sm">
+        {{ item.desc }}
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
