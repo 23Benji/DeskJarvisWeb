@@ -9,5 +9,13 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./hero.css']
 })
 export class HeroComponent {
-  // We can add "typing effects" logic here later if you want animations
+
+  scrollToDashboard() {
+    // Finds the <app-dashboard> element and scrolls to it
+    const dashboardElement = document.querySelector('app-dashboard');
+    if (dashboardElement) {
+      dashboardElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
 }

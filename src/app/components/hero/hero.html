@@ -17,16 +17,16 @@
     Your futuristic personal desktop environment. <br class="hidden md:block" />
     Productivity meets <span class="text-sci-text font-semibold">sci-fi aesthetics</span>.
   </p>
-
   <div class="flex flex-col sm:flex-row gap-4 w-full justify-center items-center relative z-10">
-    <button class="group relative px-8 py-3 bg-sci-cyan text-black font-display font-bold tracking-widest uppercase text-sm clip-path-slant hover:bg-sci-cyanHover transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)]">
-      Initialize
-      <div class="absolute top-0 right-0 w-2 h-2 bg-white/50 clip-path-corner"></div>
+
+    <button (click)="scrollToDashboard()"
+            class="group relative px-10 py-4 bg-sci-cyan rounded-lg text-black font-display font-bold tracking-[0.2em] uppercase text-sm hover:bg-sci-cyanHover transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_40px_rgba(6,182,212,0.6)] hover:-translate-y-1">
+
+      Initialize System
+
+      <i class="fa-solid fa-arrow-down ml-2 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"></i>
     </button>
 
-    <button class="group px-8 py-3 border border-white/10 hover:border-sci-cyan/50 text-sci-text font-display font-bold tracking-widest uppercase text-sm bg-sci-panel/30 hover:bg-sci-panel transition-all">
-      View Docs
-    </button>
   </div>
 
   <div class="mt-12 flex flex-col items-center animate-fade-in relative z-10">
